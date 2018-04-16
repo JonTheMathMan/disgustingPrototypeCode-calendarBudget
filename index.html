@@ -1,0 +1,19 @@
+<html>
+<body>
+<button onclick="prevMonth()">backward</button>
+<button onclick="nextMonth()">forward</button>
+<h5 id="viewMonthName"></h5>
+<div id="weekdayNames"></div>
+<div id="daysOfMonthContainer" style="position:relative;"></div>
+<script src="calendar.js"></script>
+<style>
+	.dayBox {
+		position: absolute;
+		width:100px;
+		height:100px;
+		border-style: solid;
+		border-width: 5px;
+	}
+</style>
+</body>
+</html>

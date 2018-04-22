@@ -41,10 +41,11 @@ function showDays(){
 		dayBox.className = "dayBox";
 		dayBox.style.left = 120 * (i % 7);
 		dayBox.style.top = 120 * Math.floor(i/7);
+		dayBoxesContainer.style.height = 120 * Math.floor(i/7) + 120;
 		dayBox.innerHTML = i+1;
 		dayBox.dateDayNumber = i+1;
 		dayBox.getDate = function(){return this.dateDayNumber;};
-		dayBox.onclick = function(){alert(this.getDate());};
+		dayBox.onclick = function(){viewMonth.setDate(this.getDate());document.getElementById("dateField").value = viewMonth.toDateString();};
 		dayBoxesContainer.appendChild(dayBox);
 	}
 	daysOfMonthContainer.appendChild(dayBoxesContainer);

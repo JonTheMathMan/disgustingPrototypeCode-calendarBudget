@@ -7,22 +7,23 @@
 <div id="daysOfMonthContainer" style="position:relative;"></div>
 <div id="createEventContainer" style="background-color:ddeeee;position:relative;">
 	<p>Date:</p>
-	<textarea id="dateField"></textarea>
+	<textarea disabled=true class="createCalendarEvent" id="date"></textarea>
 	<p>Repeat Interval:</p>
-	<textarea></textarea>
+	<textarea class="createCalendarEvent" id="repeatInterval"></textarea>
 	<p>Account Name:</p>
-	<textarea></textarea>
+	<textarea class="createCalendarEvent" id="accountName"></textarea>
 	<p>Category Tag:</p>
-	<textarea></textarea>
+	<textarea class="createCalendarEvent" id="categoryTag"></textarea>
 	<p>Amount:</p>
-	<textarea></textarea>
+	<textarea class="createCalendarEvent" id="amount"></textarea>
 	<p>Memo:</p>
-	<textarea></textarea>
+	<textarea class="createCalendarEvent" id="memo"></textarea>
 	<br/>
 	<br/>
-	<button>Create Event</button>
+	<button onclick="createCalendarEvent()">Create Event</button>
 </div>
 <script src="calendar.js"></script>
+<script src="eventMaker.js"></script>
 <style>
 	.dayBox {
 		position: absolute;

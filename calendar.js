@@ -45,7 +45,7 @@ function showDays(){
 		dayBox.innerHTML = i+1;
 		dayBox.dateDayNumber = i+1;
 		dayBox.getDate = function(){return this.dateDayNumber;};
-		dayBox.onclick = function(){viewMonth.setDate(this.getDate());document.getElementById("dateField").value = viewMonth.toDateString();};
+		dayBox.onclick = function(){viewMonth.setDate(this.getDate());document.getElementById("date").value = viewMonth.toDateString();};
 		dayBoxesContainer.appendChild(dayBox);
 	}
 	daysOfMonthContainer.appendChild(dayBoxesContainer);

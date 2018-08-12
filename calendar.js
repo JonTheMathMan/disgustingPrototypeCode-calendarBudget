@@ -17,16 +17,17 @@ function getMonthLength(monthInt, fullYearInt){
 var currentDate = new Date();
 var viewMonth = new Date();
 viewMonth.setDate(1);
-document.getElementById("viewMonthName").innerHTML = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
+document.getElementById("viewMonthName").textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
 showDays();
+getDropdowns();
 function prevMonth() {
 	viewMonth.setMonth(viewMonth.getMonth()-1);
-	document.getElementById("viewMonthName").innerHTML = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
+	document.getElementById("viewMonthName").textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
 	showDays();
 }
 function nextMonth() {
 	viewMonth.setMonth(viewMonth.getMonth()+1);
-	document.getElementById("viewMonthName").innerHTML = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
+	document.getElementById("viewMonthName").textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
 	showDays();
 }
 function showDays(){
@@ -42,7 +43,7 @@ function showDays(){
 		dayBox.style.left = 120 * (i % 7);
 		dayBox.style.top = 120 * Math.floor(i/7);
 		dayBoxesContainer.style.height = 120 * Math.floor(i/7) + 120;
-		dayBox.innerHTML = i+1;
+		dayBox.textContent = i+1;
 		dayBox.dateDayNumber = i+1;
 		dayBox.getDate = function(){return this.dateDayNumber;};
 		dayBox.onclick = function(){viewMonth.setDate(this.getDate());document.getElementById("date").value = viewMonth.toDateString();};

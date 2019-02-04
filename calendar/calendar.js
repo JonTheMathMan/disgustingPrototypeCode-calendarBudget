@@ -19,7 +19,6 @@ var viewMonth = new Date();
 viewMonth.setDate(1);
 document.getElementById("viewMonthName").textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
 showDays();
-getDropdowns();
 function prevMonth() {
 	viewMonth.setMonth(viewMonth.getMonth()-1);
 	document.getElementById("viewMonthName").textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
@@ -36,17 +35,33 @@ function showDays(){
 		daysOfMonthContainer.removeChild(daysOfMonthContainer.firstElementChild);
 	}
 	var dayBoxesContainer = document.createElement("div");
+	var dayOftheWeek = viewMonth.getDay();
+	var weekShift;
+	var cyclePeriod = 101;
+	var marginSide = 10;
 	for(var i=0; i<getMonthLength(viewMonth.getMonth(), viewMonth.getFullYear()); i++) {
-
+		weekShift = i+dayOftheWeek;
 		var dayBox = document.createElement("div");
 		dayBox.className = "dayBox";
-		dayBox.style.left = 120 * (i % 7);
-		dayBox.style.top = 120 * Math.floor(i/7);
-		dayBoxesContainer.style.height = 120 * Math.floor(i/7) + 120;
+		dayBox.style.left = cyclePeriod * (weekShift % 7) + marginSide;
+		dayBox.style.top = cyclePeriod * Math.floor(weekShift/7) + marginSide;
+		dayBoxesContainer.style.height = cyclePeriod * Math.floor(weekShift/7) + cyclePeriod + 2 * marginSide;
 		dayBox.textContent = i+1;
 		dayBox.dateDayNumber = i+1;
 		dayBox.getDate = function(){return this.dateDayNumber;};
-		dayBox.onclick = function(){viewMonth.setDate(this.getDate());document.getElementById("date").value = viewMonth.toDateString();};
+		dayBox.onmouseover = function(){
+			this.textContent += " Add Event?";
+		};
+		dayBox.onmouseleave = function(){
+			this.textContent = this.getDate();
+		};
+		dayBox.onclick = function(){
+			viewMonth.setDate(this.getDate());
+			document.getElementById("date").value = viewMonth.toDateString();
+			document.getElementById("calendarPage").hidden = true;
+			document.getElementById("newEventPage").hidden = false;
+			selectedPage = "newEventPage";
+		};
 		dayBoxesContainer.appendChild(dayBox);
 	}
 	daysOfMonthContainer.appendChild(dayBoxesContainer);

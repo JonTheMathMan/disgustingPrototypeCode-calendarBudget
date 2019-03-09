@@ -3,20 +3,24 @@
 <body>
 	<table id="bannerMenu">
 		<tr>
+			<td class="menuOption" onclick="showPage('loadJSONPage')">Load File</td>
 			<td class="menuOption" onclick="showPage('calendarPage')">Calendar</td>
 			<td class="menuOption" onclick="showPage('newEventPage')">New Event</td>
 		</tr>
 	</table>
-	<div id="calendarPage"></div>
+	<div id="loadJSONPage"></div>
+	<div hidden=true id="calendarPage"></div>
 	<div hidden=true id="newEventPage"></div>
-	<script src="calendar/calendarHtml.js"></script>
-	<script src="events/eventMakerHtml.js"></script>
+	<script src="pages/loadingJSON/loadJSONhtml.js"></script>
+	<script src="pages/calendar/calendarHtml.js"></script>
+	<script src="pages/events/eventMakerHtml.js"></script>
 	<script src="includePages.js"></script>
-	<script src="calendar/calendar.js"></script>
-	<script src="events/dropdown.js"></script>
-	<script src="events/eventMaker.js"></script>
+	<script src="pages/loadingJSON/loadJSON.js"></script>
+	<script src="pages/calendar/calendar.js"></script>
+	<script src="pages/events/dropdown.js"></script>
+	<script src="pages/events/eventMaker.js"></script>
 	<script>
-		var selectedPage = "calendarPage";
+		var selectedPage = "loadJSONPage";
 		function showPage(pageClicked) {
 			document.getElementById(selectedPage).hidden = true;
 			document.getElementById(pageClicked).hidden = false;
@@ -24,16 +28,19 @@
 		}
 	</script>
 	<style>
+		body {
+			background-image: linear-gradient(lightgray, white);
+		}
 		#bannerMenu {
 			width: 100%;
-			height: 50px;
+			height: 30px;
 		}
 
 		.menuOption {
 			text-align: center;
 			vertical-align: center;
 			background-image: linear-gradient(darkgreen, lightgreen);
-			height: 50px;
+			height: 30px;
 		}
 		.dayBox {
 				position: absolute;

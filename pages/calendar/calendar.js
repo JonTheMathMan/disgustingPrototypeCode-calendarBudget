@@ -31,14 +31,52 @@ function nextMonth() {
 }
 function showDays(){
 	var daysOfMonthContainer = document.getElementById("daysOfMonthContainer");
-	if (daysOfMonthContainer.firstElementChild != null) {
-		daysOfMonthContainer.removeChild(daysOfMonthContainer.firstElementChild);
+	for (var expectedChildren = 0; expectedChildren < 2; expectedChildren++) {
+		if (daysOfMonthContainer.firstElementChild !== null) {
+			daysOfMonthContainer.removeChild(daysOfMonthContainer.firstElementChild);
+		}
 	}
+
+	// container divs
+	var weekDayHeadersContainer = document.createElement("div");
 	var dayBoxesContainer = document.createElement("div");
+	var dayBoxesAbsolutePositionWrapper = document.createElement("div");
+
+
+	// styling - div position variables
 	var dayOftheWeek = viewMonth.getDay();
 	var weekShift;
 	var cyclePeriod = 101;
 	var marginSide = 10;
+
+	// container divs properties
+	weekDayHeadersContainer.id = "weekDayHeaders";
+	weekDayHeadersContainer.style.height = 10;
+	dayBoxesContainer.id = "dayBoxesContainer";
+	dayBoxesAbsolutePositionWrapper.style.position = "absolute";
+
+	// day of the week column headers
+	var weekDayNames = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday"
+	];
+	for (var weekDayIndex in weekDayNames){
+		var weekDayHeader = document.createElement("div");
+		weekDayHeader.style.position = "absolute";
+		weekDayHeader.style.left = cyclePeriod * weekDayIndex + marginSide;
+		weekDayHeader.style.width = cyclePeriod;
+		weekDayHeader.style.textAlign = "center";
+		weekDayHeader.textContent = weekDayNames[weekDayIndex];
+		weekDayHeadersContainer.appendChild(weekDayHeader);
+	}
+	daysOfMonthContainer.appendChild(weekDayHeadersContainer);
+
+	// dayBoxes
 	for(var i=0; i<getMonthLength(viewMonth.getMonth(), viewMonth.getFullYear()); i++) {
 		weekShift = i+dayOftheWeek;
 		var dayBox = document.createElement("div");
@@ -62,7 +100,8 @@ function showDays(){
 			document.getElementById("newEventPage").hidden = false;
 			selectedPage = "newEventPage";
 		};
-		dayBoxesContainer.appendChild(dayBox);
+		dayBoxesAbsolutePositionWrapper.appendChild(dayBox);
 	}
+	dayBoxesContainer.appendChild(dayBoxesAbsolutePositionWrapper);
 	daysOfMonthContainer.appendChild(dayBoxesContainer);
 }

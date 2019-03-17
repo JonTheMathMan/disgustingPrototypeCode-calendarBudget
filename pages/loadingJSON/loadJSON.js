@@ -20,7 +20,6 @@ function loadFile() {
     }
     else {
       file = input.files[0];
-      console.log(file, typeof file);
       fr = new FileReader();
       fr.onload = receivedText;
       fr.readAsText(file);
@@ -38,4 +37,11 @@ function loadFile() {
       budgetData = fileJson;
       document.getElementById("fileLoadedMsg").textContent = "File Loaded";
     }
+  }
+
+  function saveFile() {
+    alert("Calendar Events Budget:\n\nWill overwrite budgetEvents.json in downloads folder.\nIf you are on a phone,\n\t it is reccomended that the downloads folder be set to a path on the SD card in the browser settings.");
+	  var a = document.getElementById("saveFile");
+  	a.download    = "budgetEvents.json";
+  	a.href        = URL.createObjectURL(new Blob([JSON.stringify(budgetData)], {type: "application/json"}));
   }

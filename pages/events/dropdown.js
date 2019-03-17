@@ -1,25 +1,30 @@
 function convertToDropdownElement(givenElement, options) {
+	for (var childIndex = 0; childIndex < givenElement.length; childIndex++) {
+		givenElement.removeChild(children[childIndex]);
+	}
 	var selectedField = getDropdownField("select an option");
+	givenElement.selectedOptionText = "select an option";
 	selectedField.open = false;
-	selectedField.onclick = function() {
+	selectedField.onclick = function () {
 		selectedField.open = !selectedField.open;
 		if (selectedField.open) {
-			for(var i=0; i<options.length; i++){
+			for (var i = 0; i < options.length; i++) {
 				let optionField = getDropdownField(options[i]);
-				optionField.onclick = function() {
+				optionField.onclick = function () {
 					selectedField.textContent = optionField.textContent;
+					givenElement.selectedOptionText = selectedField.textContent;
 					if (givenElement.id === "repeatIntervalType") {
 						toggleValueFieldEnabled(optionField.textContent);
 					}
 					selectedField.open = !selectedField.open;
-					for (var i2=givenElement.children.length-1; i2>0; i2--) {
+					for (var i2 = givenElement.children.length - 1; i2 > 0; i2--) {
 						givenElement.removeChild(givenElement.children[i2]);
 					}
 				};
 				givenElement.appendChild(optionField);
 			}
 		} else {
-			for (var i2=givenElement.children.length-1; i2>0; i2--) {
+			for (var i2 = givenElement.children.length - 1; i2 > 0; i2--) {
 				givenElement.removeChild(givenElement.children[i2]);
 			}
 		}
@@ -40,30 +45,43 @@ function getDropdownField(fieldValue) {
 function toggleValueFieldEnabled(intervalOption) {
 	var intervalValueField = document.getElementById("repeatIntervalValue");
 
-	if (["daily", "weekly - every same day of the week", "monthly - every Nth day of the month"].includes(intervalOption)){
+	if (["daily", "weekly - every same day of the week", "monthly - every Nth day of the month"].includes(intervalOption)) {
 		intervalValueField.value = "";
 		intervalValueField.disabled = true;
-	}else{
+	} else {
 		intervalValueField.disabled = false;
 	}
 }
 
 function getDropdowns() {
 	var dropdowns = document.getElementsByClassName("eventDropdown");
-	for(var i=0; i<dropdowns.length; i++) {
-		switch(dropdowns[i].id) {
+	for (var i = 0; i < dropdowns.length; i++) {
+		switch (dropdowns[i].id) {
 			case "repeatIntervalType":
 				convertToDropdownElement(dropdowns[i], [
 					"daily",
 					"weekly - every same day of the week",
 					"monthly - every Nth day of the month",
 					"interval - every N days",
+					"interval - every N weeks",
 					"interval - every N weeks on the same day of the week",
 					"interval - every N Months on the same day of the month"
-					]);
+				]);
 				break;
 			case "accountName":
+				if (budgetData.accounts !== undefined && budgetData.accounts.length > 0) {
+					convertToDropdownElement(dropdowns[i], budgetData.accounts);
+				} else {
+					convertToDropdownElement(dropdowns[i], ["no dropdown options"]);
+				}
+				break;
 			case "categoryTag":
+				if (budgetData.categories !== undefined && budgetData.categories.length > 0) {
+					convertToDropdownElement(dropdowns[i], budgetData.categories);
+				} else {
+					convertToDropdownElement(dropdowns[i], ["no dropdown options"]);
+				}
+				break;
 			default:
 				convertToDropdownElement(dropdowns[i], ["no dropdown options"]);
 		}

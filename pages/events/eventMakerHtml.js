@@ -19,5 +19,5 @@ var eventMakerHtml = `<div id="createEventContainer" style="background-color:lig
             <textarea class="createCalendarEvent" id="memo"></textarea>
             <br/>
             <br/>
-            <a id="saveFile"><button onclick="createCalendarEvent()">Create Event</button></a>
+            <button onclick="createCalendarEvent()">Create Event</button>
         </div>`;

@@ -3,7 +3,10 @@ var loadJSONHtml = `<div id="inputBox"><form id="jsonFile" name="jsonFile" encty
  <input type='file' id='fileinput'>
  <input type='button' value='Submit' onclick='loadFile();'>
 </form>
-<p id="fileLoadedMsg">File Not Loaded</p></div>
+<p id="fileLoadedMsg">File Not Loaded</p>
+<p></p>
+<a id="saveFile"><button onclick="saveFile()">Save Changes</button></a>
+</div>
 <style>
     #inputBox {
         background-color:gray;

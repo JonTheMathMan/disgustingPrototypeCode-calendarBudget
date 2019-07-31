@@ -1,0 +1,26 @@
+{
+    "accounts": {
+        "checking": true
+    },
+    "categories": {
+        "food": true
+    },
+    "events": [
+        {
+            "eventID": 1564547868163,
+            "date": "Wed Jul 31 2019",
+            "accountName": "checking",
+            "categoryTag": "food",
+            "amount": "4.50",
+            "memo": "debugtest"
+        },
+        {
+            "eventID": 1564547907337,
+            "date": "Sun Aug 04 2019",
+            "accountName": "checking",
+            "categoryTag": "food",
+            "amount": "5.50",
+            "memo": "debugtest2"
+        }
+    ]
+}

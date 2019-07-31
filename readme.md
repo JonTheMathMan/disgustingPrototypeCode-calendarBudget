@@ -1,5 +1,7 @@
 # calendarBudget
 
+This is pretty disgusting code. Still a work in progress. Really screws the code to try to do this in the browser without any requests to a backend. Should make an electron app or c++/c# app, so that the code can be prettier, faster, and cross-platform in the electron app case.
+
 TODO:
 - Make a calendar program that can create income or expense events that have category tags and account name tags.
 - Have a setting that lets you choose what UI feature shows when the program starts (Default should maybe be create new event).

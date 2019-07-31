@@ -36,18 +36,18 @@ function createCalendarEvent() {
 	if (eventEntry.newAccountName !== undefined && eventEntry.accountName === undefined) {
 		eventEntry.accountName = eventEntry.newAccountName;
 		if (budgetData.accounts === undefined) {
-			budgetData.accounts = [];
+			budgetData.accounts = {};
 		}
-		budgetData.accounts.push(eventEntry.newAccountName);
+		budgetData.accounts[eventEntry.newAccountName.toLowerCase()] = true;
 		eventEntry.newAccountName = undefined;
 	}
 
 	if (eventEntry.newCategoryTag !== undefined && eventEntry.categoryTag === undefined) {
 		eventEntry.categoryTag = eventEntry.newCategoryTag;
 		if (budgetData.categories === undefined) {
-			budgetData.categories = [];
+			budgetData.categories = {};
 		}
-		budgetData.categories.push(eventEntry.newCategoryTag);
+		budgetData.categories[eventEntry.newCategoryTag.toLowerCase()] = true;
 		eventEntry.newCategoryTag = undefined;
 	}
 

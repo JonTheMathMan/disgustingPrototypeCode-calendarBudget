@@ -35,6 +35,7 @@ function loadFile() {
       }
       
       budgetData = fileJson;
+      getDropdowns();
       document.getElementById("fileLoadedMsg").textContent = "File Loaded";
     }
   }

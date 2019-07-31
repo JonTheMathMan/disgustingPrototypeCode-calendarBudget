@@ -1,6 +1,6 @@
 function convertToDropdownElement(givenElement, options) {
-	for (var childIndex = 0; childIndex < givenElement.length; childIndex++) {
-		givenElement.removeChild(children[childIndex]);
+	for (var childIndex = 0; childIndex < givenElement.children.length; childIndex++) {
+		givenElement.removeChild(givenElement.children[childIndex]);
 	}
 	var selectedField = getDropdownField("select an option");
 	givenElement.selectedOptionText = "select an option";
@@ -8,8 +8,17 @@ function convertToDropdownElement(givenElement, options) {
 	selectedField.onclick = function () {
 		selectedField.open = !selectedField.open;
 		if (selectedField.open) {
-			for (var i = 0; i < options.length; i++) {
-				let optionField = getDropdownField(options[i]);
+			for (var optionsKey in options) {
+				var optionField = {};
+				if (Array.isArray(options)) {
+					/* [ "fieldname" ] */
+					optionField = getDropdownField(options[optionsKey]);
+				} else {
+					/* {
+						"fieldname": true
+					} */
+					optionField = getDropdownField(optionsKey);
+				}
 				optionField.onclick = function () {
 					selectedField.textContent = optionField.textContent;
 					givenElement.selectedOptionText = selectedField.textContent;
@@ -69,14 +78,14 @@ function getDropdowns() {
 				]);
 				break;
 			case "accountName":
-				if (budgetData.accounts !== undefined && budgetData.accounts.length > 0) {
+				if (budgetData.accounts !== undefined && Object.keys(budgetData.accounts).length > 0) {
 					convertToDropdownElement(dropdowns[i], budgetData.accounts);
 				} else {
 					convertToDropdownElement(dropdowns[i], ["no dropdown options"]);
 				}
 				break;
 			case "categoryTag":
-				if (budgetData.categories !== undefined && budgetData.categories.length > 0) {
+				if (budgetData.categories !== undefined && Object.keys(budgetData.categories).length > 0) {
 					convertToDropdownElement(dropdowns[i], budgetData.categories);
 				} else {
 					convertToDropdownElement(dropdowns[i], ["no dropdown options"]);

@@ -26,10 +26,21 @@ function showEvents() {
     for (var index in budgetData.events) {
         var eView = document.createElement("div");
         var table = document.createElement("table");
+        table.style = "border:solid;border-width:2;width:50%;";
         for (var key in budgetData.events[index]) {
-            table.innerHTML += "<tr><th>" + key + "</th><td>" + budgetData.events[index][key] + "</td></tr>";
+            if (key === "eventID") {
+                continue;
+            }
+            table.innerHTML += "<tr><th>" + camelcaseToTitle(key) + "</th><td>" + budgetData.events[index][key] + "</td></tr>";
         }
         eView.appendChild(table);
         eventsView.appendChild(eView);
     }
+}
+
+// converts camelcase to title with spaces "eyeOfTheTiger" -> "Eye Of The Tiger"
+function camelcaseToTitle(text) {
+    var result = text.replace( /([A-Z])/g, " $1");
+    var result2 = result.replace(/(^[a-z])/, result.match(/(^[a-z])/)[0].toUpperCase());
+    return result2;
 }

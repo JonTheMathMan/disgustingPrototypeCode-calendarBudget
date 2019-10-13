@@ -5,6 +5,10 @@ var eventMakerHtml = `<div id="createEventContainer" style="background-color:lig
             <div class="createCalendarEvent eventDropdown" id="repeatIntervalType"></div>
             <p>Repeat Interval Value:</p>
             <textarea disabled=true class="createCalendarEvent" id="repeatIntervalValue"></textarea>
+            <p>Calendar Name:</p>
+            <div class="createCalendarEvent eventDropdown" id="calendarName"></div>
+            <p>New Calendar Name:</p>
+            <textarea class="createCalendarEvent" id="newCalendarName"></textarea>
             <p>Account Name:</p>
             <div class="createCalendarEvent eventDropdown" id="accountName"></div>
             <p>New Account Name:</p>

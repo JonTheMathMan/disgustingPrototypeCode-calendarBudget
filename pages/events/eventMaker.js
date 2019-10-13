@@ -23,6 +23,11 @@ function createCalendarEvent() {
 		return;
 	}
 
+	if (eventEntry.newCalendarName !== undefined && eventEntry.calendarName !== undefined) {
+		alert("Please don't add a new calendar name with an existing calendar name selected.");
+		return;
+	}
+
 	if (eventEntry.newAccountName !== undefined && eventEntry.accountName !== undefined) {
 		alert("Please don't add a new account name with an existing account name selected.");
 		return;
@@ -33,8 +38,17 @@ function createCalendarEvent() {
 		return;
 	}
 
+	if (eventEntry.newCalendarName !== undefined && eventEntry.calendarName === undefined) {
+		eventEntry.calendarName = eventEntry.newCalendarName.toLowerCase();
+		if (budgetData.calendars === undefined) {
+			budgetData.calendars = {};
+		}
+		budgetData.calendars[eventEntry.newCalendarName.toLowerCase()] = true;
+		eventEntry.newCalendarName = undefined;
+	}
+
 	if (eventEntry.newAccountName !== undefined && eventEntry.accountName === undefined) {
-		eventEntry.accountName = eventEntry.newAccountName;
+		eventEntry.accountName = eventEntry.newAccountName.toLowerCase();
 		if (budgetData.accounts === undefined) {
 			budgetData.accounts = {};
 		}
@@ -43,7 +57,7 @@ function createCalendarEvent() {
 	}
 
 	if (eventEntry.newCategoryTag !== undefined && eventEntry.categoryTag === undefined) {
-		eventEntry.categoryTag = eventEntry.newCategoryTag;
+		eventEntry.categoryTag = eventEntry.newCategoryTag.toLowerCase();
 		if (budgetData.categories === undefined) {
 			budgetData.categories = {};
 		}

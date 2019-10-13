@@ -1,4 +1,8 @@
 {
+    "calendars": {
+        "recorded": true,
+        "spendingplan1": true
+    },
     "accounts": {
         "checking": true
     },
@@ -7,20 +11,31 @@
     },
     "events": [
         {
-            "eventID": 1564547868163,
-            "date": "Wed Jul 31 2019",
+            "eventID": 1570952725138,
+            "date": "Sun Oct 13 2019",
+            "calendarName": "recorded",
             "accountName": "checking",
             "categoryTag": "food",
-            "amount": "4.50",
-            "memo": "debugtest"
+            "amount": "3.75",
+            "memo": "sandwich"
         },
         {
-            "eventID": 1564547907337,
-            "date": "Sun Aug 04 2019",
+            "eventID": 1570952760101,
+            "date": "Mon Oct 14 2019",
+            "calendarName": "spendingplan1",
             "accountName": "checking",
             "categoryTag": "food",
-            "amount": "5.50",
-            "memo": "debugtest2"
+            "amount": "7.25",
+            "memo": "burger"
+        },
+        {
+            "eventID": 1570952817431,
+            "date": "Tue Oct 15 2019",
+            "calendarName": "spendingplan1",
+            "accountName": "checking",
+            "categoryTag": "food",
+            "amount": "4.27",
+            "memo": "Large strawberry milkshake"
         }
     ]
 }

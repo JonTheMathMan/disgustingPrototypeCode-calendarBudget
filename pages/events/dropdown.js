@@ -20,10 +20,10 @@ function convertToDropdownElement(givenElement, options) {
 					optionField = getDropdownField(optionsKey);
 				}
 				optionField.onclick = function () {
-					selectedField.textContent = optionField.textContent;
+					selectedField.textContent = this.textContent;
 					givenElement.selectedOptionText = selectedField.textContent;
 					if (givenElement.id === "repeatIntervalType") {
-						toggleValueFieldEnabled(optionField.textContent);
+						toggleValueFieldEnabled(this.textContent);
 					}
 					selectedField.open = !selectedField.open;
 					for (var i2 = givenElement.children.length - 1; i2 > 0; i2--) {
@@ -76,6 +76,13 @@ function getDropdowns() {
 					"interval - every N weeks on the same day of the week",
 					"interval - every N Months on the same day of the month"
 				]);
+				break;
+			case "calendarName":
+				if (budgetData.calendars !== undefined && Object.keys(budgetData.calendars).length > 0) {
+					convertToDropdownElement(dropdowns[i], budgetData.calendars);
+				} else {
+					convertToDropdownElement(dropdowns[i], ["no dropdown options"]);
+				}
 				break;
 			case "accountName":
 				if (budgetData.accounts !== undefined && Object.keys(budgetData.accounts).length > 0) {

@@ -1,5 +1,9 @@
 var eventsViewerHtml = `<div id="createEventContainer" style="background-color:lightgreen;position:relative;">
-<div id="eventsFilters" style="height:20%;">Todo events viewer filters</div>
+<div id="eventsFilters"></div>
+<button onclick="updateFilterDropdowns()">Refresh Dropdown Options</button>
 <button onclick="showEvents()">Update View</button>
-<div id="eventsList" style="height:75%;overflow:scroll;"></div>
+<h4>Events Value Total</h4>
+<div id="eventsValueTotal"></div>
+<h4>Events</h4>
+<div id="eventsList" style="overflow:scroll;"></div>
 </div>`;

@@ -1,7 +1,7 @@
-function getMonthLength(monthInt, fullYearInt){
+function getMonthLength(monthInt, fullYearInt) {
 	switch (monthInt) {
 		case 1:
-			if(fullYearInt % 4 === 0) {
+			if (fullYearInt % 4 === 0) {
 				return 29;
 			}
 			return 28;
@@ -11,7 +11,7 @@ function getMonthLength(monthInt, fullYearInt){
 		case 10:
 			return 30;
 	}
-	return 31;	
+	return 31;
 }
 
 // day of the week column headers
@@ -35,7 +35,7 @@ var weekDayNamesShort = [
 	"Sat"
 ];
 
-function getNewCalendarView(thisElement, fullSize=true) {
+function getNewCalendarView(thisElement, fullSize = true) {
 
 	var currentDate = new Date();
 	var viewMonth = new Date();
@@ -48,19 +48,19 @@ function getNewCalendarView(thisElement, fullSize=true) {
 	if (!fullSize) {
 		weekDayNames = weekDayNamesShort;
 	}
-	
+
 	// set date to the first of the month
 	viewMonth.setDate(1);
 
 	// show which month is in view
 	var viewMonthName = document.createElement("h5");
 	thisElement.appendChild(viewMonthName);
-	viewMonthName.textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
-	
+	viewMonthName.textContent = viewMonth.toDateString().slice(3, 8) + viewMonth.getFullYear();
+
 	// view previous month
-	var prevMonth = function() {
-		viewMonth.setMonth(viewMonth.getMonth()-1);
-		viewMonthName.textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
+	var prevMonth = function () {
+		viewMonth.setMonth(viewMonth.getMonth() - 1);
+		viewMonthName.textContent = viewMonth.toDateString().slice(3, 8) + viewMonth.getFullYear();
 		showDays();
 	};
 	var prevMonthButton = document.createElement("button");
@@ -69,9 +69,9 @@ function getNewCalendarView(thisElement, fullSize=true) {
 	thisElement.appendChild(prevMonthButton);
 
 	// view next month
-	var nextMonth = function() {
-		viewMonth.setMonth(viewMonth.getMonth()+1);
-		viewMonthName.textContent = viewMonth.toDateString().slice(3,8) + viewMonth.getFullYear();
+	var nextMonth = function () {
+		viewMonth.setMonth(viewMonth.getMonth() + 1);
+		viewMonthName.textContent = viewMonth.toDateString().slice(3, 8) + viewMonth.getFullYear();
 		showDays();
 	};
 	var nextMonthButton = document.createElement("button");
@@ -80,21 +80,21 @@ function getNewCalendarView(thisElement, fullSize=true) {
 	thisElement.appendChild(nextMonthButton);
 
 	// get week day Header Element For Calendar
-	var getWeekDayHeader = function(weekDayIndex, weekDayNames){
+	var getWeekDayHeader = function (weekDayIndex, weekDayNames) {
 		var weekDayHeader = document.createElement("div");
-			weekDayHeader.style.position = "absolute";
-			weekDayHeader.style.left = cyclePeriod * weekDayIndex + marginSide;
-			weekDayHeader.style.width = cyclePeriod;
-			weekDayHeader.style.textAlign = "center";
-			weekDayHeader.textContent = weekDayNames[weekDayIndex];
-			return weekDayHeader;
+		weekDayHeader.style.position = "absolute";
+		weekDayHeader.style.left = cyclePeriod * weekDayIndex + marginSide;
+		weekDayHeader.style.width = cyclePeriod;
+		weekDayHeader.style.textAlign = "center";
+		weekDayHeader.textContent = weekDayNames[weekDayIndex];
+		return weekDayHeader;
 	};
 
-	var getWeekDayHeadersContainer = function() {
+	var getWeekDayHeadersContainer = function () {
 		var weekDayHeadersContainer = document.createElement("div");
 		// weekDayHeadersContainer.id = "weekDayHeaders";
 		weekDayHeadersContainer.style.height = 10;
-		for (var weekDayIndex in weekDayNames){
+		for (var weekDayIndex in weekDayNames) {
 			var weekDayHeader = getWeekDayHeader(weekDayIndex, weekDayNames)
 			weekDayHeadersContainer.appendChild(weekDayHeader);
 		}
@@ -104,7 +104,7 @@ function getNewCalendarView(thisElement, fullSize=true) {
 	thisElement.appendChild(getWeekDayHeadersContainer());
 
 	// use chosen date in the create event window
-	var createEventWithThisDate = function(){
+	var createEventWithThisDate = function () {
 		viewMonth.setDate(this.getDate());
 		document.getElementById("date").value = viewMonth.toDateString();
 		document.getElementById("calendarPage").hidden = true;
@@ -113,13 +113,14 @@ function getNewCalendarView(thisElement, fullSize=true) {
 	};
 
 	// set the selected date for date input
-	var setSelectedDate = function() {
+	var setSelectedDate = function () {
 		viewMonth.setDate(this.getDate());
-		theElement.SelectedDate = viewMonth;
+		thisElement.selectedDate = new Date(viewMonth.toDateString());
+		showDays();
 	};
 
 	// update the calendar with the month's day box divs
-	var showDays = function(){
+	var showDays = function () {
 		var daysOfMonthContainer = thisElement;
 		// five items appended to this element total which is 4 in 0 based indexing
 		var expectedDayBoxContainerIndex = 4;
@@ -136,25 +137,34 @@ function getNewCalendarView(thisElement, fullSize=true) {
 		dayBoxesAbsolutePositionWrapper.style.position = "absolute";
 
 		// styling - div position variables
+		viewMonth.setDate(1);
 		var dayOftheWeek = viewMonth.getDay();
 		var weekShift;
 
 		// dayBoxes
-		for(var i=0; i<getMonthLength(viewMonth.getMonth(), viewMonth.getFullYear()); i++) {
-			weekShift = i+dayOftheWeek;
+		for (var i = 0; i < getMonthLength(viewMonth.getMonth(), viewMonth.getFullYear()); i++) {
+			weekShift = i + dayOftheWeek;
 			var dayBox = document.createElement("div");
 			dayBox.className = "dayBox";
 			dayBox.style.left = cyclePeriod * (weekShift % 7) + marginSide;
-			dayBox.style.top = cyclePeriod * Math.floor(weekShift/7) + marginSide;
+			dayBox.style.top = cyclePeriod * Math.floor(weekShift / 7) + marginSide;
 			dayBox.style.height = cyclePeriod - 1;
 			dayBox.style.width = cyclePeriod - 1;
-			dayBoxesContainer.style.height = cyclePeriod * Math.floor(weekShift/7) + cyclePeriod + 2 * marginSide;
-			dayBox.textContent = i+1;
-			dayBox.dateDayNumber = i+1;
-			dayBox.getDate = function(){return this.dateDayNumber;};
+			dayBoxesContainer.style.height = cyclePeriod * Math.floor(weekShift / 7) + cyclePeriod + 2 * marginSide;
+			dayBox.textContent = i + 1;
+			dayBox.dateDayNumber = i + 1;
+			dayBox.getDate = function () { return this.dateDayNumber; };
+			if (
+				thisElement.selectedDate != undefined &&
+				viewMonth.getMonth() == thisElement.selectedDate.getMonth() &&
+				viewMonth.getFullYear() == thisElement.selectedDate.getFullYear() &&
+				dayBox.dateDayNumber == thisElement.selectedDate.getDate()
+			) {
+				dayBox.style["background-color"] = "blue";
+			}
 			if (fullSize === true) {
 				dayBox.onclick = createEventWithThisDate;
-			}else {
+			} else {
 				dayBox.onclick = setSelectedDate;
 			}
 			dayBoxesAbsolutePositionWrapper.appendChild(dayBox);

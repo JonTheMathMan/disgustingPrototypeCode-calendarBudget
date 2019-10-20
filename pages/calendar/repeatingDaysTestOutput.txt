@@ -1,0 +1,351 @@
+repeatingEvents_test.js:135 name daily_window_after 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Mon Aug 19 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Mon Aug 19 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name daily_window_cover 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Tue Aug 13 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Fri Aug 16 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name daily_window_before 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sat Aug 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Tue Aug 13 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name daily_window_start 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Fri Aug 16 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name daily_window_end 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Tue Aug 13 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name daily_window_sameday 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_after 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Tue Sep 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Aug 29 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 05 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_after_but_before_first_occurrence 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sat Aug 24 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_cover 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sat Aug 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sun Aug 25 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 2 
+ 
+ dates (2) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_before 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Tue Aug 13 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_start 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sun Aug 25 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 2 
+ 
+ dates (2) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_end 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name weekly - every same day of the week_window_sameday 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_after 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Fri Aug 16 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sun Aug 25 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Wed Aug 21 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sat Aug 24 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_after_but_before_first_occurrence 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Fri Aug 16 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sat Aug 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_cover 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sat Aug 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Wed Aug 21 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_before 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Wed Aug 07 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Tue Aug 13 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_start 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Tue Aug 20 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 2 
+ 
+ dates (2) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Sun Aug 18 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_end 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Sat Aug 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N days_window_sameday 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_after 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Wed Oct 30 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Sep 05 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 26 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Oct 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_after_but_before_first_occurrence 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 22 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Sun Sep 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_cover 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Mon Jun 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Wed Oct 30 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 4 
+ 
+ dates (4) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 05 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 26 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Oct 17 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_before 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Mon Jun 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 01 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents false 
+ numOccurrences 0 
+ 
+ dates [
+  
+ ] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_start 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Mon Sep 30 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 3 
+ 
+ dates (3) [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 05 2019 00:00:00 GMT-0700 (Pacific Daylight Time),
+  Thu Sep 26 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_end 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Mon Jun 10 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 
+
+repeatingEvents_test.js:135 name interval - every N weeks_window_sameday 
+ eventDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ startDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ endDate Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time) 
+ 
+ hasRepeatEvents true 
+ numOccurrences 1 
+ 
+ dates [
+  Thu Aug 15 2019 00:00:00 GMT-0700 (Pacific Daylight Time)] 

@@ -1,7 +1,7 @@
 function sortEvents() {
     budgetData.events.sort(function (a, b) {
-        var aTimestamp = new Date(a.date).getTime();
-        var bTimestamp = new Date(b.date).getTime();
+        var aTimestamp = new Date(budgetData.eventsMap[a].date).getTime();
+        var bTimestamp = new Date(budgetData.eventsMap[b].date).getTime();
         // console.log("atimestamp", aTimestamp);
         // console.log("btimestap", bTimestamp);
         // don't swap
@@ -123,15 +123,21 @@ function showEvents() {
     // filter and show events from budget data
     var eventsValueTotal = 0;
     for (var index in budgetData.events) {
-        var eventOb = budgetData.events[index];
+        var eventOb = budgetData.eventsMap[budgetData.events[index]];
 
         // filtering
         var eventObDate = new Date(eventOb.date);
-        if (startDate != undefined && eventObDate.getTime() < startDate.getTime()) {
+        if (startDate != undefined && endDate != undefined) {
+            var [repeatsInTimeWindow, occurrences, occurrenceDates] = eventHasRepeatsInDateWindow(eventOb, startDate, endDate);
+        } else {
+            var [repeatsInTimeWindow, occurrences, occurrenceDates] = [false, 0, []];
+        }
+
+        if (startDate != undefined && eventObDate.getTime() < startDate.getTime() && !repeatsInTimeWindow) {
             // date is before start date
             continue;
         }
-        if (endDate != undefined && eventObDate.getTime() > endDate.getTime()) {
+        if (endDate != undefined && eventObDate.getTime() > endDate.getTime() && !repeatsInTimeWindow) {
             // date is after end date
             continue;
         }
@@ -157,7 +163,11 @@ function showEvents() {
         }
 
         // calculate events total
-        eventsValueTotal += !isNaN(Number(eventOb.amount)) ? Number(eventOb.amount) : 0;
+        if (!repeatsInTimeWindow) {
+            eventsValueTotal += !isNaN(Number(eventOb.amount)) ? Number(eventOb.amount) : 0;
+        } else {
+            eventsValueTotal += !isNaN(Number(eventOb.amount)) ? Number(eventOb.amount) * occurrences : 0;
+        }
 
         // displaying
         var eView = document.createElement("div");
@@ -167,7 +177,13 @@ function showEvents() {
             if (key === "eventID") {
                 continue;
             }
-            table.innerHTML += "<tr><th>" + camelcaseToTitle(key) + "</th><td>" + budgetData.events[index][key] + "</td></tr>";
+            if (budgetData.eventsMap[budgetData.events[index]][key] == undefined) {
+                continue;
+            }
+            table.innerHTML += "<tr><th>" + camelcaseToTitle(key) + "</th><td>" + budgetData.eventsMap[budgetData.events[index]][key] + "</td></tr>";
+        }
+        if (repeatsInTimeWindow) {
+            table.innerHTML += "<tr><th>Dates</th><td>" + occurrenceDates + "</td></tr>";
         }
         eView.appendChild(table);
         eventsView.appendChild(eView);

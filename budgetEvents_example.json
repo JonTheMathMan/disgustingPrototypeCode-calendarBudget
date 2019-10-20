@@ -9,8 +9,8 @@
     "categories": {
         "food": true
     },
-    "events": [
-        {
+    "eventsMap": {
+        "1570952725138": {
             "eventID": 1570952725138,
             "date": "Sun Oct 13 2019",
             "calendarName": "recorded",
@@ -19,7 +19,7 @@
             "amount": "3.75",
             "memo": "sandwich"
         },
-        {
+        "1570952760101": {
             "eventID": 1570952760101,
             "date": "Mon Oct 14 2019",
             "calendarName": "spendingplan1",
@@ -28,7 +28,7 @@
             "amount": "7.25",
             "memo": "burger"
         },
-        {
+        "1570952817431": {
             "eventID": 1570952817431,
             "date": "Tue Oct 15 2019",
             "calendarName": "spendingplan1",
@@ -37,5 +37,17 @@
             "amount": "4.27",
             "memo": "Large strawberry milkshake"
         }
-    ]
+    },
+    "events": [
+        1570952725138,
+        1570952760101,
+        1570952817431
+    ],
+    "monthEvents": {
+        "201910": [
+            1570952725138,
+            1570952760101,
+            1570952817431
+        ]
+    }
 }

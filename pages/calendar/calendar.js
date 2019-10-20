@@ -40,9 +40,11 @@ function getNewCalendarView(thisElement, fullSize = true) {
 	var currentDate = new Date();
 	var viewMonth = new Date();
 	var cyclePeriod = 101;
+	var dayBoxHeight = 5 * (cyclePeriod - 1);
 	var marginSide = 10;
 	if (!fullSize) {
 		cyclePeriod = 41;
+		dayBoxHeight = cyclePeriod;
 	}
 
 	if (!fullSize) {
@@ -133,7 +135,7 @@ function getNewCalendarView(thisElement, fullSize = true) {
 		var dayBoxesAbsolutePositionWrapper = document.createElement("div");
 
 		// container divs properties
-		// dayBoxesContainer.id = "dayBoxesContainer";
+		dayBoxesContainer.id = "dayBoxesContainer";
 		dayBoxesAbsolutePositionWrapper.style.position = "absolute";
 
 		// styling - div position variables
@@ -147,10 +149,10 @@ function getNewCalendarView(thisElement, fullSize = true) {
 			var dayBox = document.createElement("div");
 			dayBox.className = "dayBox";
 			dayBox.style.left = cyclePeriod * (weekShift % 7) + marginSide;
-			dayBox.style.top = cyclePeriod * Math.floor(weekShift / 7) + marginSide;
-			dayBox.style.height = cyclePeriod - 1;
+			dayBox.style.top = dayBoxHeight * Math.floor(weekShift / 7) + marginSide;
+			dayBox.style.height = dayBoxHeight;
 			dayBox.style.width = cyclePeriod - 1;
-			dayBoxesContainer.style.height = cyclePeriod * Math.floor(weekShift / 7) + cyclePeriod + 2 * marginSide;
+			dayBoxesContainer.style.height = dayBoxHeight * Math.floor(weekShift / 7) + dayBoxHeight + 2 * marginSide;
 			dayBox.textContent = i + 1;
 			dayBox.dateDayNumber = i + 1;
 			dayBox.getDate = function () { return this.dateDayNumber; };

@@ -23,6 +23,11 @@ function createCalendarEvent() {
 		return;
 	}
 
+	if (eventEntry.repeatIntervalType != undefined && eventEntry.repeatIntervalType.startsWith("interval") && (eventEntry.repeatIntervalValue == undefined || eventEntry.repeatIntervalValue < 1)) {
+		alert("Please enter a value greater than 0 when using repeat type 'interval'");
+		return;
+	}
+
 	if (eventEntry.newCalendarName !== undefined && eventEntry.calendarName !== undefined) {
 		alert("Please don't add a new calendar name with an existing calendar name selected.");
 		return;
@@ -72,8 +77,28 @@ function createCalendarEvent() {
 
 	getDropdowns();
 
+	if (budgetData.eventsMap === undefined) {
+		budgetData.eventsMap = {};
+	}
 	if (budgetData.events === undefined) {
 		budgetData.events = [];
 	}
-	budgetData.events.push(eventEntry);
+	if (budgetData.repeatingEvents === undefined) {
+		budgetData.repeatingEvents = [];
+	}
+	if (budgetData.monthEvents === undefined) {
+		budgetData.monthEvents = {};
+	}
+	var monthMapKeyDate = new Date(eventEntry.date); 
+	var monthMapKey = "" + monthMapKeyDate.getFullYear() + monthMapKeyDate.getMonth();
+	if (budgetData.monthEvents[monthMapKey] === undefined) {
+		budgetData.monthEvents[monthMapKey] = [];
+	}
+
+	budgetData.eventsMap[eventEntry.eventID] = eventEntry;
+	budgetData.events.push(eventEntry.eventID);
+	if (eventEntry.repeatIntervalType != undefined) {
+		budgetData.repeatingEvents.push(eventEntry.eventID);
+	}
+	budgetData.monthEvents[monthMapKey].push(eventEntry.eventID);
 }

@@ -54,7 +54,7 @@ function getDropdownField(fieldValue) {
 function toggleValueFieldEnabled(intervalOption) {
 	var intervalValueField = document.getElementById("repeatIntervalValue");
 
-	if (["daily", "weekly - every same day of the week", "monthly - every Nth day of the month"].includes(intervalOption)) {
+	if (["daily", "weekly - every same day of the week", "monthly - same day of the month"].includes(intervalOption)) {
 		intervalValueField.value = "";
 		intervalValueField.disabled = true;
 	} else {
@@ -70,10 +70,9 @@ function getDropdowns() {
 				convertToDropdownElement(dropdowns[i], [
 					"daily",
 					"weekly - every same day of the week",
-					"monthly - every Nth day of the month",
+					"monthly - same day of the month",
 					"interval - every N days",
 					"interval - every N weeks",
-					"interval - every N weeks on the same day of the week",
 					"interval - every N Months on the same day of the month"
 				]);
 				break;

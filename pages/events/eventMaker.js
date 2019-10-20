@@ -99,6 +99,13 @@ function createCalendarEvent() {
 	budgetData.events.push(eventEntry.eventID);
 	if (eventEntry.repeatIntervalType != undefined) {
 		budgetData.repeatingEvents.push(eventEntry.eventID);
+	} else {
+		budgetData.monthEvents[monthMapKey].push(eventEntry.eventID);
 	}
-	budgetData.monthEvents[monthMapKey].push(eventEntry.eventID);
+
+	// refresh the main calendar view
+	var calendarDaysOfMonthContainer = document.getElementById("daysOfMonthContainer");
+	if (calendarDaysOfMonthContainer.externalRefresh != undefined) {
+	  calendarDaysOfMonthContainer.externalRefresh();
+	}
 }

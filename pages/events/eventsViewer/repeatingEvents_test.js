@@ -24,6 +24,8 @@ var testName_Days = {
     "daily_window_sameday":{repeatType:"daily", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 07, 15), endDate: new Date(2019, 07, 15)},
     // weekly - every same day of the week
     "weekly - every same day of the week_window_after":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 07, 18), endDate: new Date(2019, 08, 10)},
+    "weekly - every same day of the week_window_after_daylighsavings1":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 09, 18), endDate: new Date(2019, 10, 15)},
+    "weekly - every same day of the week_window_after_daylighsavings2":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2020, 02, 01), endDate: new Date(2020, 02, 14)},
     "weekly - every same day of the week_window_after_but_before_first_occurrence":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 07, 18), endDate: new Date(2019, 07, 21)},
     "weekly - every same day of the week_window_cover":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 07, 10), endDate: new Date(2019, 07, 25)},
     "weekly - every same day of the week_window_before":{repeatType:"weekly - every same day of the week", eventDate:new Date(2019, 07, 15), startDate:new Date(2019, 07, 01), endDate: new Date(2019, 07, 13)},

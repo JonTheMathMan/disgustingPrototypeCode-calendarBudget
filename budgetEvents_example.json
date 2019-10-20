@@ -7,7 +7,8 @@
         "checking": true
     },
     "categories": {
-        "food": true
+        "food": true,
+        "car fuel": true
     },
     "eventsMap": {
         "1570952725138": {
@@ -36,18 +37,33 @@
             "categoryTag": "food",
             "amount": "4.27",
             "memo": "Large strawberry milkshake"
+        },
+        "1571559329522": {
+            "eventID": 1571559329522,
+            "date": "Tue Oct 15 2019",
+            "repeatIntervalType": "interval - every N weeks",
+            "repeatIntervalValue": "2",
+            "calendarName": "spendingplan1",
+            "accountName": "checking",
+            "categoryTag": "car fuel",
+            "amount": "25.00",
+            "memo": "topped Off Tank"
         }
     },
     "events": [
         1570952725138,
         1570952760101,
-        1570952817431
+        1570952817431,
+        1571559329522
     ],
     "monthEvents": {
-        "201910": [
+        "20199": [
             1570952725138,
             1570952760101,
             1570952817431
         ]
-    }
+    },
+    "repeatingEvents": [
+        1571559329522
+    ]
 }

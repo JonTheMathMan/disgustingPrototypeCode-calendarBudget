@@ -52,13 +52,13 @@ function getRepeatedDays(commonArgs, missingIntervalValue, repeatIntervalValue) 
         }
         var occurrences = Math.floor(moduloDiff / repeatIntervalValue) + 1;
         if (moduloStart == 0) {
-            var firstOccurranceTime = startTime;
+            var firstOccurranceDate = new Date(startDate.toDateString());
         } else {
-            var firstOccurranceTime = startTime + inverseModuloStart * 86400000;
+            var firstOccurranceDate = addDaysAsNewDate(startDate, inverseModuloStart);
         }
-        var datesRepeated = [new Date(firstOccurranceTime)];
+        var datesRepeated = [firstOccurranceDate];
         for (var i = 1; i < occurrences; i++) {
-            datesRepeated.push(new Date(firstOccurranceTime + i * repeatIntervalValue * 86400000));
+            datesRepeated.push(addDaysAsNewDate(firstOccurranceDate, i * repeatIntervalValue));
         }
         return [true, occurrences, datesRepeated];
     }
@@ -67,7 +67,7 @@ function getRepeatedDays(commonArgs, missingIntervalValue, repeatIntervalValue) 
     var occurrences = Math.floor(eventObDateDiff / repeatIntervalValue) + 1;
     var datesRepeated = [eventObDate];
     for (var i = 1; i < occurrences; i++) {
-        datesRepeated.push(new Date(eventObTime + i * repeatIntervalValue * 86400000));
+        datesRepeated.push(addDaysAsNewDate(eventObDate, i * repeatIntervalValue));
     }
     return [true, occurrences, datesRepeated];
 }
@@ -138,8 +138,69 @@ function getRepeatedMonths(commonArgs, missingIntervalValue, repeatIntervalValue
     return [true, occurrences, datesRepeated];
 }
 
+function getMonthLength(monthInt, fullYearInt) {
+    if (isNaN(monthInt)) {
+        alert("getMonthLength monthInt is NaN value is", monthInt);
+        return;
+    }
+    if (isNaN(monthInt)) {
+        alert("getMonthLength fullYearInt is NaN value is", fullYearInt);
+        return;
+    }
+	switch (monthInt) {
+		case 1:
+			if (fullYearInt % 4 === 0) {
+				return 29;
+			}
+			return 28;
+		case 3:
+		case 5:
+		case 8:
+		case 10:
+			return 30;
+	}
+	return 31;
+}
+
+function getYearDayCount(fullYearInt, monthInt, dateOfMonth) {
+    if (isNaN(monthInt)) {
+        alert("getYearDayCount monthInt is NaN value is", monthInt);
+        return;
+    }
+    if (isNaN(fullYearInt)) {
+        alert("getYearDayCount fullYearInt is NaN value is", fullYearInt);
+        return;
+    }
+    if (isNaN(dateOfMonth)) {
+        alert("getYearDayCount dateOfMonth is NaN value is", dateOfMonth);
+        return;
+    }
+
+    var count = 0;
+    for (var i = 0; i<monthInt; i++){
+        count += getMonthLength(i, fullYearInt);
+    }
+    count += dateOfMonth;
+    return count;
+}
+
 function getDaysDiff(startDate, endDate) {
-    return endDate.getTime() / 86400000 - startDate.getTime() / 86400000;
+    var yearsDiff = endDate.getFullYear() - startDate.getFullYear();
+    if (yearsDiff>0) {
+        // different callendar years (2019, 2020)
+        var startDateYearLength = startDate.getFullYear() % 4 == 0 ? 366 : 365;
+        var betweenYearsDayCount = 0;
+        for (var i = startDate.getFullYear()+1; i<endDate.getFullYear(); i++) {
+            if (i % 4 == 0) {
+                betweenYearsDayCount += 366;
+            } else {
+                betweenYearsDayCount += 365;
+            }
+        }
+        return startDateYearLength - getYearDayCount(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()) + betweenYearsDayCount + getYearDayCount(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+    }
+    // same calendar year (2019)
+    return getYearDayCount(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()) - getYearDayCount(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
 }
 
 function getWeeksDiff(startDate, endDate) {
@@ -148,12 +209,18 @@ function getWeeksDiff(startDate, endDate) {
 
 function getMonthsDiff(startDate, endDate) {
     var yearsDiff = endDate.getFullYear() - startDate.getFullYear();
-    // different callendar years (2019, 2020)
     if (yearsDiff > 0) {
+        // different callendar years (2019, 2020)
         return (12 - startDate.getMonth()) + (yearsDiff - 1) * 12 + endDate.getMonth();
     }
     // same calendar year (2019)
     return endDate.getMonth() - startDate.getMonth();
+}
+
+function addDaysAsNewDate(givenDate, daysToAdd) {
+    var newDate = new Date(givenDate.toDateString());
+    newDate.setDate(givenDate.getDate() + daysToAdd);
+    return newDate;
 }
 
 function addMonthsAsNewDate(givenDate, monthsToAdd) {

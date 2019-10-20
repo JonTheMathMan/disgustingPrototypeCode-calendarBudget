@@ -37,6 +37,11 @@ function loadFile() {
       budgetData = fileJson;
       getDropdowns();
       document.getElementById("fileLoadedMsg").textContent = "File Loaded";
+      // refresh the main calendar view
+      var calendarDaysOfMonthContainer = document.getElementById("daysOfMonthContainer");
+      if (calendarDaysOfMonthContainer.externalRefresh != undefined) {
+        calendarDaysOfMonthContainer.externalRefresh();
+      }
     }
   }
 

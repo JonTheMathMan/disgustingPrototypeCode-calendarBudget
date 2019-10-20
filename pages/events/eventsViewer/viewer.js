@@ -177,24 +177,17 @@ function showEvents() {
             if (key === "eventID") {
                 continue;
             }
-            if (budgetData.eventsMap[budgetData.events[index]][key] == undefined) {
+            if (eventOb[key] == undefined) {
                 continue;
             }
-            table.innerHTML += "<tr><th>" + camelcaseToTitle(key) + "</th><td>" + budgetData.eventsMap[budgetData.events[index]][key] + "</td></tr>";
+            appendLeftHeaderTableRow(table, camelcaseToTitle(key), eventOb[key]);
         }
         if (repeatsInTimeWindow) {
-            table.innerHTML += "<tr><th>Dates</th><td>" + occurrenceDates + "</td></tr>";
+            appendLeftHeaderTableRow(table, "Dates", occurrenceDates);
         }
         eView.appendChild(table);
         eventsView.appendChild(eView);
     }
     // display events total
     document.getElementById("eventsValueTotal").innerText = eventsValueTotal;
-}
-
-// converts camelcase to title with spaces "eyeOfTheTiger" -> "Eye Of The Tiger"
-function camelcaseToTitle(text) {
-    var result = text.replace(/([A-Z])/g, " $1");
-    var result2 = result.replace(/(^[a-z])/, result.match(/(^[a-z])/)[0].toUpperCase());
-    return result2;
 }

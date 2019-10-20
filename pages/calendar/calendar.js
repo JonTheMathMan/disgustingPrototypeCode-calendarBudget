@@ -1,19 +1,3 @@
-function getMonthLength(monthInt, fullYearInt) {
-	switch (monthInt) {
-		case 1:
-			if (fullYearInt % 4 === 0) {
-				return 29;
-			}
-			return 28;
-		case 3:
-		case 5:
-		case 8:
-		case 10:
-			return 30;
-	}
-	return 31;
-}
-
 // day of the week column headers
 var weekDayNames = [
 	"Sunday",
@@ -37,7 +21,7 @@ var weekDayNamesShort = [
 
 function getNewCalendarView(thisElement, fullSize = true) {
 
-	var currentDate = new Date();
+	// var currentDate = new Date();
 	var viewMonth = new Date();
 	var cyclePeriod = 101;
 	var dayBoxHeight = 5 * (cyclePeriod - 1);
@@ -81,6 +65,17 @@ function getNewCalendarView(thisElement, fullSize = true) {
 	nextMonthButton.textContent = "Next Month";
 	thisElement.appendChild(nextMonthButton);
 
+	// refresh the day boxes view and remove selected date
+	var refreshCalendar = function () {
+		thisElement.selectedDate = undefined;
+		showDays();
+	};
+	var refreshButton = document.createElement("button");
+	refreshButton.onclick = refreshCalendar;
+	thisElement.externalRefresh = refreshCalendar;
+	refreshButton.textContent = "Refresh";
+	thisElement.appendChild(refreshButton);
+
 	// get week day Header Element For Calendar
 	var getWeekDayHeader = function (weekDayIndex, weekDayNames) {
 		var weekDayHeader = document.createElement("div");
@@ -106,7 +101,10 @@ function getNewCalendarView(thisElement, fullSize = true) {
 	thisElement.appendChild(getWeekDayHeadersContainer());
 
 	// use chosen date in the create event window
-	var createEventWithThisDate = function () {
+	var createEventWithThisDate = function (e) {
+		if (e.cancelBubble) e.cancelBubble = true;
+		if (e.stopPropagation) e.stopPropagation();
+
 		viewMonth.setDate(this.getDate());
 		document.getElementById("date").value = viewMonth.toDateString();
 		document.getElementById("calendarPage").hidden = true;
@@ -125,7 +123,7 @@ function getNewCalendarView(thisElement, fullSize = true) {
 	var showDays = function () {
 		var daysOfMonthContainer = thisElement;
 		// five items appended to this element total which is 4 in 0 based indexing
-		var expectedDayBoxContainerIndex = 4;
+		var expectedDayBoxContainerIndex = 5;
 		if (daysOfMonthContainer.children[expectedDayBoxContainerIndex] !== undefined) {
 			daysOfMonthContainer.removeChild(daysOfMonthContainer.children[expectedDayBoxContainerIndex]);
 		}
@@ -144,6 +142,17 @@ function getNewCalendarView(thisElement, fullSize = true) {
 		var weekShift;
 
 		// dayBoxes
+		//    day and month maps for viewing events on the calendar
+		var dayBoxMap = {};
+		var monthMapKey = "" + viewMonth.getFullYear() + viewMonth.getMonth();
+		if (budgetData.monthEvents == undefined) {
+			budgetData.monthEvents = {};
+		}
+		var monthEvents = budgetData.monthEvents[monthMapKey];
+		if (monthEvents == undefined) {
+			monthEvents = [];
+		}
+		//    adding the dayboxes
 		for (var i = 0; i < getMonthLength(viewMonth.getMonth(), viewMonth.getFullYear()); i++) {
 			weekShift = i + dayOftheWeek;
 			var dayBox = document.createElement("div");
@@ -169,10 +178,37 @@ function getNewCalendarView(thisElement, fullSize = true) {
 			} else {
 				dayBox.onclick = setSelectedDate;
 			}
+			dayBoxMap[dayBox.dateDayNumber] = dayBox;
 			dayBoxesAbsolutePositionWrapper.appendChild(dayBox);
 		}
 		dayBoxesContainer.appendChild(dayBoxesAbsolutePositionWrapper);
 		daysOfMonthContainer.appendChild(dayBoxesContainer);
+
+		// viewing events on the calendar
+		if (fullSize) {
+			for (var i = 0; i < monthEvents.length; i++) {
+				var eventOb = budgetData.eventsMap[monthEvents[i]];
+				var dayBoxDateToFind = new Date(eventOb.date).getDate();
+				dayBoxMap[dayBoxDateToFind].appendChild(getCalendarEventViewer(eventOb));
+			}
+			if (budgetData.repeatingEvents != undefined) {
+				var startDate = new Date(viewMonth.toDateString());
+				var endDate = new Date(viewMonth.toDateString());
+				startDate.setDate(1);
+				endDate.setDate(getMonthLength(endDate.getMonth(), endDate.getFullYear()));
+				for (var i = 0; i < budgetData.repeatingEvents.length; i++) {
+					var eventOb = budgetData.eventsMap[budgetData.repeatingEvents[i]];
+					var [hasRepeatingEvents, occurrences, dates] = eventHasRepeatsInDateWindow(eventOb, startDate, endDate);
+					if (!hasRepeatingEvents) {
+						continue;
+					}
+					for (var dateIndex = 0; dateIndex < dates.length; dateIndex++) {
+						var dayBoxDateToFind = dates[dateIndex].getDate();
+						dayBoxMap[dayBoxDateToFind].appendChild(getCalendarEventViewer(eventOb));
+					}
+				}
+			}
+		}
 	};
 	showDays();
 }

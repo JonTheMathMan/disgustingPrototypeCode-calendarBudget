@@ -48,9 +48,9 @@ function createFilterElements() {
     calendarNameFilter.id = "calendarNameFilter";
     filterContainer.appendChild(calendarNameFilter);
     if (budgetData.calendars !== undefined && Object.keys(budgetData.calendars).length > 0) {
-        convertToDropdownElement(calendarNameFilter, budgetData.calendars);
+        convertToMultiSelectDropdownElement(calendarNameFilter, budgetData.calendars);
     } else {
-        convertToDropdownElement(calendarNameFilter, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(calendarNameFilter, ["no dropdown options"]);
     }
 
     // account name
@@ -59,9 +59,9 @@ function createFilterElements() {
     accountNameFilter.id = "accountNameFilter";
     filterContainer.appendChild(accountNameFilter);
     if (budgetData.accounts !== undefined && Object.keys(budgetData.accounts).length > 0) {
-        convertToDropdownElement(accountNameFilter, budgetData.accounts);
+        convertToMultiSelectDropdownElement(accountNameFilter, budgetData.accounts);
     } else {
-        convertToDropdownElement(accountNameFilter, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(accountNameFilter, ["no dropdown options"]);
     }
 
     // category tag
@@ -70,9 +70,9 @@ function createFilterElements() {
     categoryTagFilter.id = "categoryTagFilter";
     filterContainer.appendChild(categoryTagFilter);
     if (budgetData.categories !== undefined && Object.keys(budgetData.categories).length > 0) {
-        convertToDropdownElement(categoryTagFilter, budgetData.categories);
+        convertToMultiSelectDropdownElement(categoryTagFilter, budgetData.categories);
     } else {
-        convertToDropdownElement(categoryTagFilter, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(categoryTagFilter, ["no dropdown options"]);
     }
 }
 createFilterElements();
@@ -80,23 +80,23 @@ createFilterElements();
 function updateFilterDropdowns() {
     var calendarName = document.getElementById("calendarNameFilter");
     if (budgetData.calendars !== undefined && Object.keys(budgetData.calendars).length > 0) {
-        convertToDropdownElement(calendarName, budgetData.calendars);
+        convertToMultiSelectDropdownElement(calendarName, budgetData.calendars);
     } else {
-        convertToDropdownElement(calendarName, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(calendarName, ["no dropdown options"]);
     }
 
     var accountName = document.getElementById("accountNameFilter");
     if (budgetData.accounts !== undefined && Object.keys(budgetData.accounts).length > 0) {
-        convertToDropdownElement(accountName, budgetData.accounts);
+        convertToMultiSelectDropdownElement(accountName, budgetData.accounts);
     } else {
-        convertToDropdownElement(accountName, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(accountName, ["no dropdown options"]);
     }
 
     var categoryTag = document.getElementById("categoryTagFilter");
     if (budgetData.categories !== undefined && Object.keys(budgetData.categories).length > 0) {
-        convertToDropdownElement(categoryTag, budgetData.categories);
+        convertToMultiSelectDropdownElement(categoryTag, budgetData.categories);
     } else {
-        convertToDropdownElement(categoryTag, ["no dropdown options"]);
+        convertToMultiSelectDropdownElement(categoryTag, ["no dropdown options"]);
     }
 }
 
@@ -116,9 +116,9 @@ function showEvents() {
         alert("start date is after end date");
         return;
     }
-    var calendarName = document.getElementById("calendarNameFilter").selectedOptionText;
-    var accountName = document.getElementById("accountNameFilter").selectedOptionText;
-    var categoryTag = document.getElementById("categoryTagFilter").selectedOptionText;
+    var calendarNames = document.getElementById("calendarNameFilter").selectedFields;
+    var accountNames = document.getElementById("accountNameFilter").selectedFields;
+    var categoryTags = document.getElementById("categoryTagFilter").selectedFields;
 
     // filter and show events from budget data
     var eventsValueTotal = 0;
@@ -142,24 +142,17 @@ function showEvents() {
             continue;
         }
 
-        var emptyDropdownValues = ["select an option", "no dropdown options", ""];
-        if (calendarName != undefined && !emptyDropdownValues.includes(calendarName)) {
-            if (eventOb.calendarName != calendarName) {
+        if (calendarNames != undefined && calendarNames.length > 0 && !calendarNames.includes(eventOb.calendarName)) {
                 // does not match selected filter value
                 continue;
-            }
         }
-        if (accountName != undefined && !emptyDropdownValues.includes(accountName)) {
-            if (eventOb.accountName != accountName) {
+        if (accountNames != undefined && accountNames.length > 0 && !accountNames.includes(eventOb.accountName)) {
                 // does not match selected filter value
                 continue;
-            }
         }
-        if (categoryTag != undefined && !emptyDropdownValues.includes(categoryTag)) {
-            if (eventOb.categoryTag != categoryTag) {
+        if (categoryTags != undefined && categoryTags.length > 0 && !categoryTags.includes(eventOb.categoryTag)) {
                 // does not match selected filter value
                 continue;
-            }
         }
 
         // calculate events total

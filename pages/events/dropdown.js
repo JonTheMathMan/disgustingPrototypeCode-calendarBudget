@@ -3,9 +3,9 @@ function convertToDropdownElement(givenElement, options) {
 	givenElement.style.borderColor = "black";
 	givenElement.style.width = "200px";
 
-	for (var childIndex = 0; childIndex < givenElement.children.length; childIndex++) {
-		givenElement.removeChild(givenElement.children[childIndex]);
-	}
+	for (var i = givenElement.children.length - 1; i >= 0; i--) {
+        givenElement.removeChild(givenElement.children[i]); 
+    }
 	var selectedField = getDropdownField("select an option");
 	givenElement.selectedOptionText = "select an option";
 	selectedField.open = false;

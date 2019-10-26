@@ -23,6 +23,11 @@ function createCalendarEvent() {
 		return;
 	}
 
+	if (eventEntry.amount != undefined && isNaN(eventEntry.amount)) {
+		alert("Please enter a number for amount.");
+		return;
+	}
+
 	if (eventEntry.repeatIntervalType != undefined && eventEntry.repeatIntervalType.startsWith("interval") && (eventEntry.repeatIntervalValue == undefined || eventEntry.repeatIntervalValue < 1)) {
 		alert("Please enter a value greater than 0 when using repeat type 'interval'");
 		return;

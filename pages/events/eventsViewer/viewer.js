@@ -189,5 +189,5 @@ function showEvents() {
         eventsView.appendChild(eView);
     }
     // display events total
-    document.getElementById("eventsValueTotal").innerText = eventsValueTotal;
+    document.getElementById("eventsValueTotal").innerText = eventsValueTotal.toFixed(2);
 }

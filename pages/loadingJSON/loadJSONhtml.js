@@ -1,6 +1,7 @@
 var loadJSONHtml = `<div id="inputBox"><form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
 <h2>Json File</h2>
- <input type='file' id='fileinput'>
+ <input oninput="setLabelText(this)" hidden="true" type='file' name="file" id='fileinput'>
+ <label for="fileinput" id="fileFormLabel">Choose a file</label>
  <input type='button' value='Submit' onclick='loadFile();'>
 </form>
 <p id="fileLoadedMsg">File Not Loaded</p>
@@ -9,9 +10,10 @@ var loadJSONHtml = `<div id="inputBox"><form id="jsonFile" name="jsonFile" encty
 </div>
 <style>
     #inputBox {
-        background-color:gray;
+        background-color:#444444;
         width: 50%;
         margin-left: 25%;
         box-shadow: -10px 10px 15px;
+        color: black;
     }
 </style>`;

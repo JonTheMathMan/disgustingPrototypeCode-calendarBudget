@@ -1,5 +1,23 @@
 var budgetData = {};
 
+function setLabelText(fileInputElement) {
+  var labelElement = document.getElementById("fileFormLabel");
+  if (!fileInputElement) {
+    alert("Couldn't find the fileinput element.");
+    return;
+  }
+  else if (!fileInputElement.files) {
+    alert("This browser doesn't seem to support the `files` property of file inputs.");
+    return;
+  }
+  else if (!fileInputElement.files[0]) {
+    alert("Please select a file before clicking 'Submit'");
+    return;
+  }
+  labelElement.innerText = fileInputElement.files[0].name;
+  return;
+}
+
 function loadFile() {
     var input, file, fr;
 

@@ -1,4 +1,4 @@
-var eventMakerHtml = `<div id="createEventContainer" style="background-color:lightgreen;position:relative;">
+var eventMakerHtml = `<div id="createEventContainer" style="background-color:#111111;position:relative;">
             <p>Date:</p>
             <textarea disabled=true class="createCalendarEvent" id="date"></textarea>
             <p>Repeat Interval Type:</p>

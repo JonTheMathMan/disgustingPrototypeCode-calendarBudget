@@ -1,1 +1,1 @@
-var calendarHtml = `<div id="daysOfMonthContainer" style="background-color:lightgreen;position:relative;"></div>`;
+var calendarHtml = `<div id="daysOfMonthContainer" style="background-color:#111111;position:relative;"></div>`;

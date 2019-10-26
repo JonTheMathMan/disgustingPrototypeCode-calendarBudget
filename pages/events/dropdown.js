@@ -1,4 +1,8 @@
 function convertToDropdownElement(givenElement, options) {
+	givenElement.style.border = "solid";
+	givenElement.style.borderColor = "black";
+	givenElement.style.width = "200px";
+
 	for (var childIndex = 0; childIndex < givenElement.children.length; childIndex++) {
 		givenElement.removeChild(givenElement.children[childIndex]);
 	}
@@ -43,10 +47,9 @@ function convertToDropdownElement(givenElement, options) {
 
 function getDropdownField(fieldValue) {
 	var dropdownField = document.createElement("div");
-	dropdownField.style.borderStyle = "solid";
 	dropdownField.style.height = "40px";
 	dropdownField.style.width = "200px";
-	dropdownField.style.backgroundColor = "#eeeeee";
+	dropdownField.style.backgroundImage = "linear-gradient(#333333, black, black)";
 	dropdownField.textContent = fieldValue;
 	return dropdownField;
 }

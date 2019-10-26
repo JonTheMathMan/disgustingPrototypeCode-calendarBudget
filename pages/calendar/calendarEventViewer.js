@@ -33,16 +33,19 @@ function camelcaseToTitle(text) {
 
 function getCalendarEventViewer(eventOb) {
     var eventViewerBox = document.createElement("div");
-    eventViewerBox.style.backgroundColor = "lightblue";
+    eventViewerBox.style.backgroundColor = "#3377ff";
     eventViewerBox.style.borderTop = "solid";
     eventViewerBox.style.borderWidth = 1;
-    eventViewerBox.style.borderColor = "blue";
+    eventViewerBox.style.borderColor = "darkblue";
     var smallTable = document.createElement("table");
     var expandedTable = document.createElement("table");
     expandedTable.hidden = true;
     var closeButton = document.createElement("button");
     closeButton.innerText = "Close";
     closeButton.hidden = true;
+
+    smallTable.style.color = "black";
+    expandedTable.style.color = "black";
 
     // normal view
     appendSingleColumnTableRow(smallTable, eventOb.categoryTag);

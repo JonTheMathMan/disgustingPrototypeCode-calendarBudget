@@ -12,23 +12,51 @@ function getEditForm() {
     var memo = document.createElement("input");
     var notes = document.createElement("input");
 
-    getFormSelectOptions(repeatIntervalType, budgetData.repeatEventOptions);
-    getFormSelectOptions(calendarName, budgetData.calendars);
-    getFormSelectOptions(accountName, budgetData.accounts);
-    getFormSelectOptions(categoryTag, budgetData.categories);
-
+    editForm.refreshOptions = function() {
+        getFormSelectOptions(repeatIntervalType, budgetData.repeatEventOptions);
+        getFormSelectOptions(calendarName, budgetData.calendars);
+        getFormSelectOptions(accountName, budgetData.accounts);
+        getFormSelectOptions(categoryTag, budgetData.categories);
+    }
+    editForm.refreshOptions();
     
+    editForm.appendChild(dateEntry)
+    editForm.appendChild(repeatIntervalType)
+    editForm.appendChild(calendarName)
+    editForm.appendChild(newCalendarName)
+    editForm.appendChild(accountName)
+    editForm.appendChild(newAccountName)
+    editForm.appendChild(categoryTag)
+    editForm.appendChild(newCategoryTag)
+    editForm.appendChild(amount)
+    editForm.appendChild(memo)
+    editForm.appendChild(notes)
+    return editForm;
 }
 
 function getFormSelectOptions(selectEl, options) {
-    for (var optI = 0; optI<options.length; optI++) {
+    for (var childIndex = selectEl.children.length; childIndex>0; childIndex--) {
+        selectEl.removeChild(selectEl.children[childIndex-1]);
+    }
+    let opt = document.createElement("option");
+    opt.innerText = "select an option";
+    selectEl.appendChild(opt);
+    if (typeof options == "object" && !Array.isArray(options)) {
+        for (var optI = 0; optI < Object.keys(options).length; optI++) {
+            let opt = document.createElement("option");
+            opt.innerText = Object.keys(options)[optI];
+            selectEl.appendChild(opt);
+        }
+        return;
+    }
+    for (var optI = 0; optI < options.length; optI++) {
         let opt = document.createElement("option");
         opt.innerText = options[optI];
-        selectEl.AppendChild(opt);
+        selectEl.appendChild(opt);
     }
 }
 
-/* 
+/*
 date
 repeatIntervalType
 repeatIntervalValue

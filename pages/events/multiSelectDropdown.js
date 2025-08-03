@@ -1,6 +1,6 @@
 function convertToMultiSelectDropdownElement(givenElement, options) {
-	givenElement.style.border = "solid";
-	givenElement.style.borderColor = "black";
+	// givenElement.style.border = "solid";
+	// givenElement.style.borderColor = "green";
     givenElement.style.width = "240px";
 
 	for (var i = givenElement.children.length - 1; i >= 0; i--) {
@@ -56,7 +56,11 @@ function getMultiSelectDropdownField(fieldValue) {
     dropdownFieldOptionValue.style.textAlign = "center";
 	dropdownFieldOptionValue.style.verticalAlign = "center";
     dropdownFieldOptionValue.className = "grid-item";
-	dropdownFieldOptionValue.style.backgroundImage = "linear-gradient(#333333, black, black)";
+	dropdownFieldOptionValue.style.backgroundColor = "black";
+	dropdownFieldOptionValue.style.borderStyle = "solid";
+	dropdownFieldOptionValue.style.borderColor = "green";
+	dropdownFieldOptionValue.style.borderWidth = "1px";
+
     dropdownFieldOptionValue.textContent = fieldValue;
     
     dropdownField.appendChild(dropdownFieldCheckBox);
@@ -68,6 +72,9 @@ function getDropdownCheckbox() {
     var checkBox = document.createElement("div");
     checkBox.style.border = "solid";
     checkBox.style.backgroundColor = "black";
+    checkBox.style.borderStyle = "black";
+    checkBox.style.borderWidth = "1px";
+    checkBox.style.borderColor = "green";
     checkBox.style.width = "40px";
     checkBox.style.textAlign = "center";
 	checkBox.style.verticalAlign = "center";
